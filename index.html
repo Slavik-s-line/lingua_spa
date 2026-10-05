@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>lingua.org.ua</title>
+  <meta name="description" content="lingua.org.ua">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f5f0;
+      --fg: #16181d;
+      --accent: #2f5bea;
+      --muted: #8a8f99;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f1115;
+        --fg: #f2f2f0;
+        --accent: #7a9bff;
+        --muted: #6b717c;
+      }
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      display: grid;
+      place-items: center;
+      min-height: 100vh;
+      min-height: 100dvh;
+      padding: 16px;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: "Manrope", system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1 {
+      font-size: clamp(2.25rem, 9vw, 6.5rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      text-align: center;
+      animation: rise 0.9s cubic-bezier(.2,.7,.2,1) both;
+    }
+    h1 .tld { font-weight: 300; color: var(--muted); }
+    h1 .dot { color: var(--accent); }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      h1 { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <h1>lingua<span class="dot">.</span><span class="tld">org.ua</span></h1>
+</body>
+</html>

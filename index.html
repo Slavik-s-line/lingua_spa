@@ -3,59 +3,595 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>lingua.org.ua</title>
-  <meta name="description" content="lingua.org.ua">
+  <title>Lingualand Exam+ — іноземні мови та підготовка до іспитів у Полтаві</title>
+  <meta name="description" content="Освітній центр Lingualand Exam+ у Полтаві: іноземні мови для дітей, підлітків і дорослих, підготовка до іспитів, Cambridge-програма. Навчання офлайн та онлайн.">
+  <meta property="og:title" content="Lingualand Exam+ у Полтаві — навчання триває!">
+  <meta property="og:description" content="Іноземні мови та підготовка до іспитів для дітей, підлітків і дорослих. Офлайн та онлайн.">
+  <meta property="og:url" content="https://lingua.org.ua/">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#1d2147">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%231d2147'/%3E%3Ctext x='32' y='44' font-family='Arial' font-weight='700' font-size='34' text-anchor='middle' fill='%23fff'%3EL%3C/text%3E%3Ccircle cx='48' cy='16' r='7' fill='%23ff6b4a'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f7f5f0;
-      --fg: #16181d;
-      --accent: #2f5bea;
-      --muted: #8a8f99;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #0f1115;
-        --fg: #f2f2f0;
-        --accent: #7a9bff;
-        --muted: #6b717c;
-      }
+      --bg: #fbf8f3;
+      --surface: #ffffff;
+      --ink: #1d2147;
+      --text: #3b3f5c;
+      --muted: #6e7290;
+      --line: #ece6dc;
+      --coral: #ff6b4a;
+      --coral-dark: #e85433;
+      --blue: #3d5af1;
+      --sun: #ffc94a;
+      --mint: #5cc8a8;
+      --radius: 22px;
+      --shadow: 0 1px 2px rgba(29,33,71,.04), 0 12px 32px -12px rgba(29,33,71,.14);
+      --wrap: 1160px;
+      color-scheme: light;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { height: 100%; }
+    html { scroll-behavior: smooth; scroll-padding-top: 84px; }
     body {
-      display: grid;
-      place-items: center;
-      min-height: 100vh;
-      min-height: 100dvh;
-      padding: 16px;
       background: var(--bg);
-      color: var(--fg);
-      font-family: "Manrope", system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      font: 500 17px/1.6 "Manrope", system-ui, -apple-system, sans-serif;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
-    h1 {
-      font-size: clamp(2.25rem, 9vw, 6.5rem);
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      line-height: 1;
-      text-align: center;
-      animation: rise 0.9s cubic-bezier(.2,.7,.2,1) both;
+    img, svg, iframe { display: block; max-width: 100%; }
+    a { color: inherit; }
+    h1, h2, h3 { color: var(--ink); line-height: 1.15; }
+    h1, h2 { font-family: "Unbounded", "Manrope", sans-serif; font-weight: 700; letter-spacing: -0.02em; }
+    h2 { font-size: clamp(1.75rem, 4vw, 2.6rem); }
+    h3 { font-size: 1.2rem; font-weight: 800; }
+
+    .wrap { width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 0 20px; }
+    section { padding: clamp(64px, 9vw, 112px) 0; }
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.8rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--coral); margin-bottom: 14px;
     }
-    h1 .tld { font-weight: 300; color: var(--muted); }
-    h1 .dot { color: var(--accent); }
-    @keyframes rise {
-      from { opacity: 0; transform: translateY(12px); }
-      to   { opacity: 1; transform: none; }
+    .lead { font-size: 1.15rem; color: var(--muted); max-width: 640px; margin-top: 16px; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 15px 26px; border-radius: 999px;
+      font: inherit; font-weight: 800; font-size: 1rem; text-decoration: none;
+      border: 2px solid transparent; cursor: pointer;
+      transition: transform .15s ease, background .15s ease, box-shadow .15s ease;
     }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--coral); color: #fff; box-shadow: 0 10px 24px -10px rgba(255,107,74,.8); }
+    .btn-primary:hover { background: var(--coral-dark); }
+    .btn-ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
+    .btn-ghost:hover { background: var(--ink); color: #fff; }
+    .btn svg { width: 20px; height: 20px; flex: none; }
+
+    /* Header */
+    .notice {
+      background: var(--ink); color: #fff;
+      font-size: 0.9rem; font-weight: 600; text-align: center;
+      padding: 10px 20px;
+    }
+    .notice b { color: var(--sun); }
+    header.top {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(251,248,243,.88);
+      backdrop-filter: saturate(1.4) blur(12px);
+      -webkit-backdrop-filter: saturate(1.4) blur(12px);
+      border-bottom: 1px solid transparent;
+      transition: border-color .2s ease;
+    }
+    header.top.scrolled { border-bottom-color: var(--line); }
+    .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 72px; }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+    .logo-mark {
+      width: 40px; height: 40px; border-radius: 12px; background: var(--ink); color: #fff;
+      display: grid; place-items: center; position: relative;
+      font-family: "Unbounded", sans-serif; font-weight: 700; font-size: 1.1rem;
+    }
+    .logo-mark::after {
+      content: ""; position: absolute; top: -4px; right: -4px;
+      width: 13px; height: 13px; border-radius: 50%; background: var(--coral); border: 2px solid var(--bg);
+    }
+    .logo-text { font-family: "Unbounded", sans-serif; font-weight: 700; font-size: 1.05rem; letter-spacing: -0.02em; }
+    .logo-text span { color: var(--coral); }
+    nav.menu { display: flex; gap: 28px; }
+    nav.menu a { text-decoration: none; font-weight: 700; font-size: 0.95rem; color: var(--text); }
+    nav.menu a:hover { color: var(--coral); }
+    .top .btn { padding: 11px 20px; font-size: 0.95rem; }
+    @media (max-width: 920px) { nav.menu { display: none; } }
+
+    /* Hero */
+    .hero { padding-top: clamp(40px, 6vw, 80px); position: relative; }
+    .hero .wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; }
+    .hero h1 { font-size: clamp(2.2rem, 5.6vw, 4rem); }
+    .hero h1 em { font-style: normal; color: var(--coral); }
+    .hero .lead { font-size: 1.2rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+    .hero-facts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 36px; }
+    .chip {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 9px 16px; border-radius: 999px;
+      background: var(--surface); border: 1px solid var(--line);
+      font-size: 0.9rem; font-weight: 700; color: var(--ink);
+    }
+    .chip .dot { width: 8px; height: 8px; border-radius: 50%; }
+
+    .hero-art { position: relative; aspect-ratio: 1 / 1; max-width: 480px; justify-self: center; width: 100%; }
+    .blob {
+      position: absolute; inset: 6%;
+      background: radial-gradient(circle at 30% 30%, #ffe2d9, transparent 60%), radial-gradient(circle at 75% 70%, #dfe5ff, transparent 60%), #fff3e3;
+      border-radius: 46% 54% 42% 58% / 52% 44% 56% 48%;
+      animation: morph 14s ease-in-out infinite;
+    }
+    .bubble {
+      position: absolute; padding: 14px 20px; border-radius: 20px;
+      font-family: "Unbounded", sans-serif; font-weight: 700; font-size: clamp(0.95rem, 2vw, 1.2rem);
+      box-shadow: var(--shadow); white-space: nowrap; z-index: 2;
+      animation: float 6s ease-in-out infinite;
+    }
+    .bubble::after {
+      content: ""; position: absolute; bottom: -8px; left: 24px;
+      width: 16px; height: 16px; background: inherit; transform: rotate(45deg); border-radius: 3px;
+    }
+    .b1 { top: 12%; left: 4%; background: var(--surface); color: var(--ink); }
+    .b2 { top: 30%; right: 0; background: var(--blue); color: #fff; animation-delay: -2s; }
+    .b3 { bottom: 26%; left: 10%; background: var(--sun); color: var(--ink); animation-delay: -4s; }
+    .b4 { bottom: 8%; right: 10%; background: var(--coral); color: #fff; animation-delay: -1s; }
+    .hero-badge {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 42%; aspect-ratio: 1; border-radius: 50%;
+      background: var(--ink); color: #fff;
+      display: grid; place-items: center; text-align: center;
+      box-shadow: 0 24px 48px -16px rgba(29,33,71,.45);
+    }
+    .hero-badge strong { font-family: "Unbounded", sans-serif; font-size: clamp(1.4rem, 3.4vw, 2.2rem); display: block; line-height: 1; }
+    .hero-badge strong span { color: var(--coral); }
+    .hero-badge small { display: block; font-size: clamp(0.62rem, 1.6vw, 0.8rem); opacity: .75; margin-top: 6px; font-weight: 600; padding: 0 12%; line-height: 1.35; }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    @keyframes morph {
+      0%,100% { border-radius: 46% 54% 42% 58% / 52% 44% 56% 48%; }
+      50% { border-radius: 56% 44% 58% 42% / 44% 56% 46% 54%; }
+    }
+    @media (max-width: 860px) {
+      .hero .wrap { grid-template-columns: 1fr; }
+      .hero-art { max-width: 380px; }
+    }
+
+    /* About */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+    .offer-list { list-style: none; display: grid; gap: 14px; }
+    .offer-list li {
+      display: flex; gap: 16px; align-items: flex-start;
+      background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
+      padding: 18px 20px; font-weight: 600; color: var(--ink);
+    }
+    .check {
+      flex: none; width: 28px; height: 28px; border-radius: 50%;
+      background: #e6f7f1; color: var(--mint); display: grid; place-items: center;
+    }
+    .check svg { width: 16px; height: 16px; }
+    @media (max-width: 860px) { .about-grid { grid-template-columns: 1fr; gap: 32px; } }
+
+    /* Services */
+    .services { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 48px; }
+    .card {
+      position: relative; border-radius: var(--radius); padding: 30px 26px 28px;
+      background: var(--bg); border: 1px solid var(--line);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .card .icon {
+      width: 54px; height: 54px; border-radius: 16px; display: grid; place-items: center;
+      margin-bottom: 22px; font-size: 1.6rem;
+    }
+    .card h3 { margin-bottom: 10px; }
+    .card p { color: var(--muted); font-size: 0.98rem; }
+
+    /* Platforms */
+    .platforms .head { max-width: 720px; }
+    .platform-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
+    .platform {
+      display: flex; flex-direction: column;
+      border-radius: var(--radius); padding: 30px 28px; color: #fff; text-decoration: none;
+      position: relative; overflow: hidden; min-height: 300px;
+      transition: transform .2s ease;
+    }
+    .platform:hover { transform: translateY(-4px); }
+    .platform::before {
+      content: ""; position: absolute; width: 220px; height: 220px; border-radius: 50%;
+      right: -70px; top: -70px; background: rgba(255,255,255,.1);
+    }
+    .platform h3 { color: #fff; font-size: 1.35rem; margin: 14px 0 12px; }
+    .platform p { opacity: .88; font-size: 0.98rem; flex: 1; }
+    .platform .tag {
+      align-self: flex-start; font-size: 0.75rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+      padding: 6px 12px; border-radius: 999px; background: rgba(255,255,255,.18);
+    }
+    .platform .link { margin-top: 24px; font-weight: 800; display: inline-flex; align-items: center; gap: 8px; }
+    .platform .link svg { width: 18px; height: 18px; transition: transform .2s ease; }
+    .platform:hover .link svg { transform: translateX(4px); }
+    .p-zno { background: var(--ink); }
+    .p-bingo { background: var(--blue); }
+    .p-read { background: var(--coral); }
+    @media (max-width: 960px) { .platform-grid { grid-template-columns: 1fr; } .platform { min-height: 0; } }
+
+    /* Reviews */
+    .reviews { background: var(--ink); color: #d8dbf0; }
+    .reviews h2 { color: #fff; }
+    .reviews .eyebrow { color: var(--sun); }
+    .rating-row { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 32px; }
+    .rating {
+      display: flex; align-items: center; gap: 18px;
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius); padding: 18px 24px; text-decoration: none; color: #fff;
+    }
+    .rating .score { font-family: "Unbounded", sans-serif; font-size: 2.6rem; font-weight: 700; line-height: 1; }
+    .stars { color: var(--sun); letter-spacing: 2px; font-size: 1.1rem; }
+    .rating small { display: block; color: #aeb2d4; font-weight: 600; font-size: 0.85rem; }
+    .quotes { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 48px; }
+    blockquote {
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius); padding: 34px 32px 30px; position: relative;
+    }
+    blockquote::before {
+      content: "“"; position: absolute; top: 4px; left: 24px;
+      font-family: "Unbounded", sans-serif; font-size: 5rem; line-height: 1; color: var(--coral); opacity: .9;
+    }
+    blockquote p { color: #fff; font-size: 1.15rem; font-weight: 600; line-height: 1.55; margin-top: 30px; }
+    blockquote footer { margin-top: 18px; font-size: 0.9rem; color: #aeb2d4; }
+    @media (max-width: 760px) { .quotes { grid-template-columns: 1fr; } }
+
+    /* Enroll */
+    .enroll-box {
+      background: linear-gradient(135deg, #fff1ea 0%, #fff8e6 100%);
+      border: 1px solid #f6dccf; border-radius: 32px;
+      padding: clamp(36px, 6vw, 64px);
+      display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    .enroll-box::after {
+      content: ""; position: absolute; right: -80px; bottom: -80px; width: 260px; height: 260px;
+      border-radius: 50%; background: rgba(255,201,74,.35);
+    }
+    .steps { list-style: none; counter-reset: s; display: grid; gap: 14px; margin-top: 28px; }
+    .steps li { counter-increment: s; display: flex; gap: 14px; align-items: center; font-weight: 700; color: var(--ink); }
+    .steps li::before {
+      content: counter(s); flex: none; width: 32px; height: 32px; border-radius: 50%;
+      background: var(--ink); color: #fff; display: grid; place-items: center; font-size: 0.9rem;
+    }
+    .enroll-cta { display: grid; gap: 14px; position: relative; z-index: 1; }
+    .enroll-cta .btn { width: 100%; padding: 18px 26px; font-size: 1.05rem; }
+    .enroll-cta .or { text-align: center; color: var(--muted); font-weight: 600; font-size: 0.9rem; }
+    @media (max-width: 860px) { .enroll-box { grid-template-columns: 1fr; } }
+
+    /* Contacts */
+    .contacts-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 32px; margin-top: 48px; align-items: stretch; }
+    .contact-list { display: grid; gap: 14px; align-content: start; }
+    .contact-item {
+      display: flex; gap: 16px; align-items: flex-start;
+      background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 20px 22px;
+    }
+    .contact-item .ic {
+      flex: none; width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center;
+      background: #fff1ea; color: var(--coral);
+    }
+    .contact-item .ic svg { width: 22px; height: 22px; }
+    .contact-item small { display: block; color: var(--muted); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: .08em; }
+    .contact-item strong { color: var(--ink); font-size: 1.08rem; font-weight: 800; }
+    .contact-item a { text-decoration: none; }
+    .contact-item a:hover { color: var(--coral); }
+    .districts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .districts span {
+      padding: 6px 12px; border-radius: 999px; background: var(--bg); border: 1px solid var(--line);
+      font-size: 0.88rem; font-weight: 700; color: var(--ink);
+    }
+    .map {
+      border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line);
+      min-height: 420px; background: #eee;
+    }
+    .map iframe { width: 100%; height: 100%; min-height: 420px; border: 0; }
+    @media (max-width: 860px) { .contacts-grid { grid-template-columns: 1fr; } .map, .map iframe { min-height: 320px; } }
+
+    footer.bottom { padding: 40px 0 48px; border-top: 1px solid var(--line); font-size: 0.92rem; color: var(--muted); }
+    footer.bottom .wrap { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: center; }
+    footer.bottom a { text-decoration: none; font-weight: 700; }
+    footer.bottom a:hover { color: var(--coral); }
+
+    /* Mobile sticky call bar */
+    .mobile-bar { display: none; }
+    @media (max-width: 640px) {
+      body { font-size: 16px; }
+      .top .btn { display: none; }
+      .mobile-bar {
+        display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+        position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+        padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+        background: rgba(251,248,243,.94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+        border-top: 1px solid var(--line);
+      }
+      .mobile-bar .btn { padding: 13px 12px; font-size: 0.95rem; }
+      footer.bottom { padding-bottom: 110px; }
+    }
+
+    /* Reveal on scroll */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.in { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) {
-      h1 { animation: none; }
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .blob, .bubble { animation: none; }
     }
   </style>
 </head>
 <body>
-  <h1>lingua<span class="dot">.</span><span class="tld">org.ua</span></h1>
+
+  <div class="notice">Наш основний сайт зараз на ремонті. <b>Навчання триває!</b> Уся актуальна інформація — на цій сторінці.</div>
+
+  <header class="top">
+    <div class="wrap">
+      <a class="logo" href="#top" aria-label="Lingualand Exam+">
+        <span class="logo-mark">L</span>
+        <span class="logo-text">Lingualand <span>Exam+</span></span>
+      </a>
+      <nav class="menu" aria-label="Навігація">
+        <a href="#about">Про школу</a>
+        <a href="#services">Напрями</a>
+        <a href="#platforms">Платформи</a>
+        <a href="#reviews">Відгуки</a>
+        <a href="#contacts">Контакти</a>
+      </nav>
+      <a class="btn btn-primary" href="#enroll">Записатися</a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="wrap">
+        <div>
+          <span class="eyebrow">Освітній центр · Полтава</span>
+          <h1>Lingualand Exam+ — навчання <em>триває!</em></h1>
+          <p class="lead">Сучасні іноземні мови та якісна підготовка до іспитів для дітей, підлітків і дорослих. Ми продовжуємо навчання офлайн та онлайн.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary js-enroll" href="#enroll">Записатися на заняття</a>
+            <a class="btn btn-ghost" href="tel:+380509111446">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              +380 50 911 1446
+            </a>
+          </div>
+          <div class="hero-facts">
+            <span class="chip"><span class="dot" style="background:var(--sun)"></span>4.8 на Google Maps</span>
+            <span class="chip"><span class="dot" style="background:var(--mint)"></span>Офлайн та онлайн</span>
+            <span class="chip"><span class="dot" style="background:var(--blue)"></span>Програма Cambridge</span>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="blob"></div>
+          <div class="bubble b1">Hello!</div>
+          <div class="bubble b2">Let's talk</div>
+          <div class="bubble b3">A+ exam</div>
+          <div class="bubble b4">Cambridge</div>
+          <div class="hero-badge"><div><strong>Exam<span>+</span></strong><small>діти · підлітки · дорослі</small></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="wrap about-grid">
+        <div class="reveal">
+          <span class="eyebrow">Про школу</span>
+          <h2>Простір для тих, хто хоче вільно говорити</h2>
+          <p class="lead">Lingualand Exam+ — це простір для тих, хто прагне вільно володіти іноземними мовами та досягати академічних цілей.</p>
+        </div>
+        <ul class="offer-list reveal">
+          <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Комплексні програми для дошкільнят, школярів та дорослих</li>
+          <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Поглиблена підготовка до офіційних іспитів</li>
+          <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Сучасні комунікативні методики, які знімають мовний бар'єр</li>
+          <li><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Зручні формати: затишні аудиторії або дистанційні заняття онлайн</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="services">
+      <div class="wrap">
+        <div class="reveal">
+          <span class="eyebrow">Напрями</span>
+          <h2>Чим ми можемо допомогти?</h2>
+        </div>
+        <div class="cards">
+          <article class="card reveal">
+            <div class="icon" style="background:#fff3d6">🧒</div>
+            <h3>Мови для дітей та підлітків</h3>
+            <p>Цікаві інтерактивні заняття, розвиток навичок говоріння та допомога зі шкільною програмою.</p>
+          </article>
+          <article class="card reveal">
+            <div class="icon" style="background:#ffe6de">🎯</div>
+            <h3>Підготовка до іспитів</h3>
+            <p>Системна робота на високий бал, розбір екзаменаційних форматів та стратегій.</p>
+          </article>
+          <article class="card reveal">
+            <div class="icon" style="background:#e3e8ff">💬</div>
+            <h3>Розмовні курси для дорослих</h3>
+            <p>Практика без нудної теорії, подолання мовного бар'єра для роботи та життя.</p>
+          </article>
+          <article class="card reveal">
+            <div class="icon" style="background:#dff5ee">🎓</div>
+            <h3>Програма Cambridge</h3>
+            <p>Навчання за міжнародною Кембриджською рівневою програмою із використанням авторських методик.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Platforms -->
+    <section id="platforms" class="platforms">
+      <div class="wrap">
+        <div class="head reveal">
+          <span class="eyebrow">Наша екосистема</span>
+          <h2>Не просто уроки — власна екосистема навчання</h2>
+          <p class="lead">Для наших студентів працюють спеціальні онлайн-платформи, щоб тренуватися та закріплювати знання вдома легко і з цікавістю.</p>
+        </div>
+        <div class="platform-grid">
+          <a class="platform p-zno reveal" href="https://zno.lingua.org.ua/" target="_blank" rel="noopener">
+            <span class="tag">Домашні завдання</span>
+            <h3>ZNO Lingua</h3>
+            <p>Наш унікальний інтерактивний освітній простір. Виконання домашніх завдань перетворюється на захопливий процес.</p>
+            <span class="link">zno.lingua.org.ua <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="platform p-bingo reveal" href="https://bingolinguo.club/" target="_blank" rel="noopener">
+            <span class="tag">Мовне середовище</span>
+            <h3>Bingo Linguo Club</h3>
+            <p>Платформа, яка допомагає ще глибше зануритися в мовне середовище поза заняттями.</p>
+            <span class="link">bingolinguo.club <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="platform p-read reveal" href="https://bingolinguo.club/" target="_blank" rel="noopener">
+            <span class="tag">Молодша школа</span>
+            <h3>Фонетичний курс читання онлайн</h3>
+            <p>Розроблений спеціально для дітей молодшого шкільного віку, щоб зробити перші кроки в читанні англійською природними, легкими та без стресу.</p>
+            <span class="link">Детальніше <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section id="reviews" class="reviews">
+      <div class="wrap">
+        <div class="rating-row">
+          <div class="reveal">
+            <span class="eyebrow">Відгуки</span>
+            <h2>Що кажуть наші учні та батьки</h2>
+          </div>
+          <a class="rating reveal" href="https://www.google.com/maps/search/?api=1&query=Lingualand+Exam%2B+%D0%9F%D0%BE%D0%BB%D1%82%D0%B0%D0%B2%D0%B0" target="_blank" rel="noopener">
+            <span class="score">4.8</span>
+            <span><span class="stars">★★★★★</span><small>рейтинг на Google Maps</small></span>
+          </a>
+        </div>
+        <div class="quotes">
+          <blockquote class="reveal">
+            <p>Високопрофесійні викладачі, які вміють зацікавити дитину. Діти ходять із задоволенням, є помітний прогрес!</p>
+            <footer>— Відгук батьків</footer>
+          </blockquote>
+          <blockquote class="reveal">
+            <p>Готувалися тут до іспиту — результат перевершив очікування. Дякую команді за підтримку та індивідуальний підхід!</p>
+            <footer>— Відгук учня</footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- Enroll -->
+    <section id="enroll">
+      <div class="wrap">
+        <div class="enroll-box reveal">
+          <div>
+            <span class="eyebrow">Запис</span>
+            <h2>Як записатися?</h2>
+            <p class="lead">Залиште свої контакти, і ми зв'яжемося з вами для узгодження зручного часу.</p>
+            <ol class="steps">
+              <li>Заповніть коротку форму: ім'я, телефон, вік учня</li>
+              <li>Ми передзвонимо та підберемо групу й формат</li>
+              <li>Приходьте на заняття — офлайн чи онлайн</li>
+            </ol>
+          </div>
+          <div class="enroll-cta">
+            <a class="btn btn-primary js-enroll" href="tel:+380509111446">Заповнити форму запису</a>
+            <span class="or">або телефонуйте</span>
+            <a class="btn btn-ghost" href="tel:+380509111446">+380 50 911 1446</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacts -->
+    <section id="contacts" style="padding-top:0">
+      <div class="wrap">
+        <div class="reveal">
+          <span class="eyebrow">Контакти</span>
+          <h2>Приходьте до нас</h2>
+        </div>
+        <div class="contacts-grid">
+          <div class="contact-list">
+            <div class="contact-item reveal">
+              <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+              <div><small>Головний офіс</small><strong>м. Полтава, вул. Мазепи, 10</strong></div>
+            </div>
+            <div class="contact-item reveal">
+              <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 3l9 6.5V21H3z"/><path d="M9 21v-6h6v6"/></svg></span>
+              <div>
+                <small>Філіали в районах</small>
+                <div class="districts"><span>Алмазний</span><span>Мотель</span><span>23 Вересня</span><span>Огнівка</span><span>Фурманова</span></div>
+              </div>
+            </div>
+            <div class="contact-item reveal">
+              <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+              <div><small>Телефон</small><strong><a href="tel:+380509111446">+380 50 911 1446</a></strong></div>
+            </div>
+            <div class="contact-item reveal">
+              <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+              <div><small>Графік роботи офісу</small><strong>Пн — Пт: 14:00 – 19:00</strong></div>
+            </div>
+          </div>
+          <div class="map reveal">
+            <iframe title="Lingualand Exam+ на карті" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=%D0%9F%D0%BE%D0%BB%D1%82%D0%B0%D0%B2%D0%B0%2C+%D0%B2%D1%83%D0%BB.+%D0%9C%D0%B0%D0%B7%D0%B5%D0%BF%D0%B8%2C+10&z=16&output=embed"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bottom">
+    <div class="wrap">
+      <span>© <span id="year">2026</span> Освітній центр Lingualand Exam+, Полтава</span>
+      <span><a href="tel:+380509111446">+380 50 911 1446</a> · <a href="https://zno.lingua.org.ua/" target="_blank" rel="noopener">ZNO Lingua</a> · <a href="https://bingolinguo.club/" target="_blank" rel="noopener">Bingo Linguo Club</a></span>
+    </div>
+  </footer>
+
+  <div class="mobile-bar">
+    <a class="btn btn-ghost" href="tel:+380509111446">Подзвонити</a>
+    <a class="btn btn-primary js-enroll" href="#enroll">Записатися</a>
+  </div>
+
+  <script>
+    // Посилання на Google Форму запису. Поки порожнє — кнопки «Записатися» ведуть на блок запису / дзвінок.
+    const ENROLL_FORM_URL = '';
+
+    if (ENROLL_FORM_URL) {
+      document.querySelectorAll('.js-enroll').forEach(a => {
+        a.href = ENROLL_FORM_URL;
+        a.target = '_blank';
+        a.rel = 'noopener';
+      });
+    }
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const header = document.querySelector('header.top');
+    const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    } else {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+    }
+  </script>
 </body>
 </html>

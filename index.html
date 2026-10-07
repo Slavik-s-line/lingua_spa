@@ -9,8 +9,10 @@
   <meta property="og:description" content="Іноземні мови та підготовка до іспитів для дітей, підлітків і дорослих. Офлайн та онлайн.">
   <meta property="og:url" content="https://lingua.org.ua/">
   <meta property="og:type" content="website">
-  <meta name="theme-color" content="#1d2147">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%231d2147'/%3E%3Ctext x='32' y='44' font-family='Arial' font-weight='700' font-size='34' text-anchor='middle' fill='%23fff'%3EL%3C/text%3E%3Ccircle cx='48' cy='16' r='7' fill='%23ff6b4a'/%3E%3C/svg%3E">
+  <meta name="theme-color" content="#173a7d">
+  <link rel="icon" type="image/png" href="assets/favicon-64.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <meta property="og:image" content="https://lingua.org.ua/assets/logo-640.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
@@ -18,17 +20,17 @@
     :root {
       --bg: #fbf8f3;
       --surface: #ffffff;
-      --ink: #1d2147;
+      --ink: #173a7d;
       --text: #3b3f5c;
       --muted: #6e7290;
       --line: #ece6dc;
       --coral: #ff6b4a;
       --coral-dark: #e85433;
-      --blue: #3d5af1;
+      --blue: #2563d6;
       --sun: #ffc94a;
       --mint: #5cc8a8;
       --radius: 22px;
-      --shadow: 0 1px 2px rgba(29,33,71,.04), 0 12px 32px -12px rgba(29,33,71,.14);
+      --shadow: 0 1px 2px rgba(23,58,125,.04), 0 12px 32px -12px rgba(23,58,125,.14);
       --wrap: 1160px;
       color-scheme: light;
     }
@@ -90,15 +92,7 @@
     header.top.scrolled { border-bottom-color: var(--line); }
     .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 72px; }
     .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
-    .logo-mark {
-      width: 40px; height: 40px; border-radius: 12px; background: var(--ink); color: #fff;
-      display: grid; place-items: center; position: relative;
-      font-family: "Unbounded", sans-serif; font-weight: 700; font-size: 1.1rem;
-    }
-    .logo-mark::after {
-      content: ""; position: absolute; top: -4px; right: -4px;
-      width: 13px; height: 13px; border-radius: 50%; background: var(--coral); border: 2px solid var(--bg);
-    }
+    .logo img { width: 54px; height: 54px; flex: none; }
     .logo-text { font-family: "Unbounded", sans-serif; font-weight: 700; font-size: 1.05rem; letter-spacing: -0.02em; }
     .logo-text span { color: var(--coral); }
     nav.menu { display: flex; gap: 28px; }
@@ -140,20 +134,16 @@
       content: ""; position: absolute; bottom: -8px; left: 24px;
       width: 16px; height: 16px; background: inherit; transform: rotate(45deg); border-radius: 3px;
     }
-    .b1 { top: 12%; left: 4%; background: var(--surface); color: var(--ink); }
-    .b2 { top: 30%; right: 0; background: var(--blue); color: #fff; animation-delay: -2s; }
-    .b3 { bottom: 26%; left: 10%; background: var(--sun); color: var(--ink); animation-delay: -4s; }
-    .b4 { bottom: 8%; right: 10%; background: var(--coral); color: #fff; animation-delay: -1s; }
-    .hero-badge {
+    .b1 { top: 2%; left: 0; background: var(--surface); color: var(--ink); }
+    .b2 { top: 12%; right: -2%; background: var(--blue); color: #fff; animation-delay: -2s; }
+    .b3 { bottom: -3%; left: 6%; background: var(--sun); color: var(--ink); animation-delay: -4s; }
+    .b4 { bottom: 0; right: 2%; background: var(--coral); color: #fff; animation-delay: -1s; }
+    .hero-logo {
       position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-      width: 42%; aspect-ratio: 1; border-radius: 50%;
-      background: var(--ink); color: #fff;
-      display: grid; place-items: center; text-align: center;
-      box-shadow: 0 24px 48px -16px rgba(29,33,71,.45);
+      width: 72%; z-index: 1;
+      filter: drop-shadow(0 20px 30px rgba(23,58,125,.22));
     }
-    .hero-badge strong { font-family: "Unbounded", sans-serif; font-size: clamp(1.4rem, 3.4vw, 2.2rem); display: block; line-height: 1; }
-    .hero-badge strong span { color: var(--coral); }
-    .hero-badge small { display: block; font-size: clamp(0.62rem, 1.6vw, 0.8rem); opacity: .75; margin-top: 6px; font-weight: 600; padding: 0 12%; line-height: 1.35; }
+    .hero-logo img { width: 100%; height: auto; }
     @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
     @keyframes morph {
       0%,100% { border-radius: 46% 54% 42% 58% / 52% 44% 56% 48%; }
@@ -338,7 +328,7 @@
   <header class="top">
     <div class="wrap">
       <a class="logo" href="#top" aria-label="Lingualand Exam+">
-        <span class="logo-mark">L</span>
+        <picture><source srcset="assets/logo-160.webp" type="image/webp"><img src="assets/logo-160.png" alt="" width="54" height="54"></picture>
         <span class="logo-text">Lingualand <span>Exam+</span></span>
       </a>
       <nav class="menu" aria-label="Навігація">
@@ -380,7 +370,7 @@
           <div class="bubble b2">Let's talk</div>
           <div class="bubble b3">A+ exam</div>
           <div class="bubble b4">Cambridge</div>
-          <div class="hero-badge"><div><strong>Exam<span>+</span></strong><small>діти · підлітки · дорослі</small></div></div>
+          <picture class="hero-logo"><source srcset="assets/logo-640.webp" type="image/webp"><img src="assets/logo-640.png" alt="Логотип Lingualand Exam Plus" width="640" height="640"></picture>
         </div>
       </div>
     </section>

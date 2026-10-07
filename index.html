@@ -93,13 +93,13 @@
     .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 72px; }
     .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
     .logo img { width: 54px; height: 54px; flex: none; }
-    .logo-text { font-family: "Unbounded", sans-serif; font-weight: 700; font-size: 1.05rem; letter-spacing: -0.02em; }
+    .logo-text { font-family: "Unbounded", sans-serif; font-weight: 700; font-size: 1.05rem; letter-spacing: -0.02em; white-space: nowrap; }
     .logo-text span { color: var(--coral); }
     nav.menu { display: flex; gap: 28px; }
-    nav.menu a { text-decoration: none; font-weight: 700; font-size: 0.95rem; color: var(--text); }
+    nav.menu a { text-decoration: none; font-weight: 700; font-size: 0.95rem; color: var(--text); white-space: nowrap; }
     nav.menu a:hover { color: var(--coral); }
     .top .btn { padding: 11px 20px; font-size: 0.95rem; }
-    @media (max-width: 920px) { nav.menu { display: none; } }
+    @media (max-width: 1080px) { nav.menu { display: none; } }
 
     /* Hero */
     .hero { padding-top: clamp(40px, 6vw, 80px); position: relative; }
@@ -184,6 +184,59 @@
     }
     .card h3 { margin-bottom: 10px; }
     .card p { color: var(--muted); font-size: 0.98rem; }
+
+    /* Prices */
+    .tabs {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 36px;
+      padding: 6px; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; width: fit-content; max-width: 100%;
+    }
+    .tabs button {
+      font: inherit; font-weight: 800; font-size: 0.95rem; color: var(--text);
+      background: transparent; border: 0; border-radius: 999px; padding: 11px 20px; cursor: pointer;
+      transition: background .15s ease, color .15s ease;
+    }
+    .tabs button:hover { color: var(--ink); }
+    .t-short { display: none; }
+    .tabs button[aria-selected="true"] { background: var(--ink); color: #fff; }
+    .price-panel { margin-top: 24px; }
+    .price-list { list-style: none; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+    .p-row {
+      display: grid; grid-template-columns: 1.3fr 1.2fr 0.8fr 0.7fr; gap: 20px; align-items: center;
+      padding: 20px 28px; border-top: 1px solid var(--line);
+    }
+    .p-row:first-child { border-top: 0; }
+    .p-row:hover { background: #fffaf4; }
+    .p-name strong { display: block; color: var(--ink); font-size: 1.08rem; font-weight: 800; }
+    .grade {
+      display: inline-block; margin-top: 6px; padding: 3px 10px; border-radius: 999px;
+      background: #fff1ea; color: var(--coral-dark); font-size: 0.8rem; font-weight: 800;
+    }
+    .note { display: block; margin-top: 6px; color: var(--muted); font-size: 0.82rem; font-weight: 600; line-height: 1.4; }
+    .p-level, .p-dur { color: var(--ink); font-weight: 700; font-size: 0.95rem; }
+    .lbl { display: block; color: var(--muted); font-size: 0.72rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 2px; }
+    .p-price { text-align: right; }
+    .p-price b { display: block; font-family: "Unbounded", sans-serif; font-size: 1.25rem; font-weight: 700; color: var(--ink); white-space: nowrap; }
+    .p-price span { color: var(--muted); font-size: 0.82rem; font-weight: 700; }
+    .price-foot {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;
+      margin-top: 24px; padding: 20px 28px; border-radius: var(--radius); background: #fff1ea;
+      color: var(--ink); font-weight: 700;
+    }
+    @media (max-width: 760px) {
+      .tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; border-radius: 20px; width: 100%; }
+      .tabs button { padding: 10px 6px; font-size: 0.85rem; line-height: 1.25; border-radius: 14px; }
+      .t-long { display: none; }
+      .t-short { display: inline; }
+      .p-row { grid-template-columns: 1fr auto; gap: 10px 16px; padding: 18px 20px; }
+      .p-name { grid-column: 1; }
+      .p-price { grid-column: 2; grid-row: 1; align-self: start; }
+      .p-level, .p-dur { grid-column: 1 / -1; font-size: 0.9rem; }
+      .p-level:empty { display: none; }
+      .p-level, .p-dur { display: flex; gap: 8px; align-items: baseline; }
+      .lbl { margin: 0; min-width: 70px; }
+      .price-foot { padding: 18px 20px; }
+      .price-foot .btn { width: 100%; }
+    }
 
     /* Platforms */
     .platforms .head { max-width: 720px; }
@@ -334,6 +387,7 @@
       <nav class="menu" aria-label="Навігація">
         <a href="#about">Про школу</a>
         <a href="#services">Напрями</a>
+        <a href="#prices">Ціни</a>
         <a href="#platforms">Платформи</a>
         <a href="#reviews">Відгуки</a>
         <a href="#contacts">Контакти</a>
@@ -420,6 +474,140 @@
             <h3>Програма Cambridge</h3>
             <p>Навчання за міжнародною Кембриджською рівневою програмою із використанням авторських методик.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Prices -->
+    <section id="prices" class="prices">
+      <div class="wrap">
+        <div class="reveal">
+          <span class="eyebrow">Ціни</span>
+          <h2>Вартість навчання <span style="white-space:nowrap">2026–2027</span></h2>
+          <p class="lead">Навчальні матеріали та доступ до онлайн-порталів — <b>450 + 100 грн</b>.</p>
+        </div>
+        <div class="tabs reveal" role="tablist" aria-label="Програми">
+          <button role="tab" id="tab-kids" aria-controls="panel-kids" aria-selected="true"><span class="t-long">Англійська · д</span><span class="t-short">Д</span>іти й підлітки</button>
+          <button role="tab" id="tab-adults" aria-controls="panel-adults" aria-selected="false" tabindex="-1"><span class="t-long">Англійська · д</span><span class="t-short">Д</span>орослі</button>
+          <button role="tab" id="tab-de" aria-controls="panel-de" aria-selected="false" tabindex="-1">Німецька<span class="t-long"> мова</span></button>
+        </div>
+        <div class="price-panel reveal" role="tabpanel" id="panel-kids" aria-labelledby="tab-kids">
+          <ul class="price-list">
+              <li class="p-row">
+                <div class="p-name"><strong>Crazy Gang 1</strong><span class="grade">1 клас</span></div>
+                <div class="p-level"><span class="lbl">Рівень</span>Low Elementary 1</div>
+                <div class="p-dur"><span class="lbl">Заняття</span>1 год</div>
+                <div class="p-price"><b>1300 грн</b><span>за 8 занять</span></div>
+              </li>
+              <li class="p-row">
+                <div class="p-name"><strong>Crazy Gang 2</strong><span class="grade">2 клас</span></div>
+                <div class="p-level"><span class="lbl">Рівень</span>Low Elementary 2</div>
+                <div class="p-dur"><span class="lbl">Заняття</span>1 год</div>
+                <div class="p-price"><b>1300 грн</b><span>за 8 занять</span></div>
+              </li>
+              <li class="p-row">
+                <div class="p-name"><strong>Adventure 1</strong><span class="grade">3–4 клас</span></div>
+                <div class="p-level"><span class="lbl">Рівень</span>Basic Elementary 1</div>
+                <div class="p-dur"><span class="lbl">Заняття</span>1 год 15 хв</div>
+                <div class="p-price"><b>1300 грн</b><span>за 8 занять</span></div>
+              </li>
+              <li class="p-row">
+                <div class="p-name"><strong>Adventure 2</strong><span class="grade">4–5 клас</span></div>
+                <div class="p-level"><span class="lbl">Рівень</span>Basic Elementary 2</div>
+                <div class="p-dur"><span class="lbl">Заняття</span>1 год 30 хв</div>
+                <div class="p-price"><b>1300 грн</b><span>за 8 занять</span></div>
+              </li>
+              <li class="p-row">
+                <div class="p-name"><strong>Adventure 3</strong><span class="grade">5–6 клас</span></div>
+                <div class="p-level"><span class="lbl">Рівень</span>High Elementary 2</div>
+                <div class="p-dur"><span class="lbl">Заняття</span>1 год 30 хв</div>
+                <div class="p-price"><b>1400 грн</b><span>за 8 занять</span></div>
+              </li>
+              <li class="p-row">
+                <div class="p-name"><strong>B1+</strong><span class="grade">6–8 клас</span><small class="note">2-й рік навчання</small></div>
+                <div class="p-level"><span class="lbl">Рівень</span>Pre-Intermediate</div>
+                <div class="p-dur"><span class="lbl">Заняття</span>1 год 30 хв</div>
+                <div class="p-price"><b>1400 грн</b><span>за 8 занять</span></div>
+              </li>
+              <li class="p-row">
+                <div class="p-name"><strong>VOA Teens</strong><span class="grade">8–9 клас</span></div>
+                <div class="p-level"><span class="lbl">Рівень</span>High Elementary 2 – Pre-Intermediate</div>
+                <div class="p-dur"><span class="lbl">Заняття</span>1 год 30 хв</div>
+                <div class="p-price"><b>1500 грн</b><span>за 8 занять</span></div>
+              </li>
+              <li class="p-row">
+                <div class="p-name"><strong>FCE 2</strong><span class="grade">7–8 клас</span></div>
+                <div class="p-level"><span class="lbl">Рівень</span>Intermediate 1</div>
+                <div class="p-dur"><span class="lbl">Заняття</span>1 год 30 хв</div>
+                <div class="p-price"><b>1500 грн</b><span>за 8 занять</span></div>
+              </li>
+              <li class="p-row">
+                <div class="p-name"><strong>IELTS General</strong><span class="grade">9–10 клас</span><small class="note">іспит для навчання та проживання у Канаді</small></div>
+                <div class="p-level"><span class="lbl">Рівень</span>Intermediate 2</div>
+                <div class="p-dur"><span class="lbl">Заняття</span>1 год 30 хв</div>
+                <div class="p-price"><b>1600 грн</b><span>за 8 занять</span></div>
+              </li>
+              <li class="p-row">
+                <div class="p-name"><strong>НМТ / IELTS 1</strong><span class="grade">9–10 клас</span><small class="note">іспит для навчання та проживання у Канаді</small><small class="note">+ 3-й урок граматики щотижня</small></div>
+                <div class="p-level"><span class="lbl">Рівень</span>Intermediate 2</div>
+                <div class="p-dur"><span class="lbl">Заняття</span>1 год 30 хв</div>
+                <div class="p-price"><b>1600 грн</b><span>за 8 занять</span></div>
+              </li>
+              <li class="p-row">
+                <div class="p-name"><strong>НМТ / IELTS 2</strong><span class="grade">10–11 клас</span><small class="note">іспит для навчання та проживання у Канаді</small><small class="note">+ 3-й урок граматики щотижня</small></div>
+                <div class="p-level"><span class="lbl">Рівень</span>Upper-Intermediate</div>
+                <div class="p-dur"><span class="lbl">Заняття</span>1 год 30 хв</div>
+                <div class="p-price"><b>1700 грн</b><span>за 8 занять</span></div>
+              </li>
+          </ul>
+        </div>
+        <div class="price-panel" role="tabpanel" id="panel-adults" aria-labelledby="tab-adults" hidden>
+          <ul class="price-list">
+              <li class="p-row">
+                <div class="p-name"><strong>Beginners</strong><span class="grade">Дорослі</span></div>
+                <div class="p-level"><span class="lbl">Рівень</span>A1</div>
+                <div class="p-dur"><span class="lbl">Заняття</span>1 год 30 хв</div>
+                <div class="p-price"><b>1800 грн</b><span>за 8 занять</span></div>
+              </li>
+              <li class="p-row">
+                <div class="p-name"><strong>Intensive Adults</strong><span class="grade">Дорослі</span></div>
+                <div class="p-level"><span class="lbl">Рівень</span>Elementary A2 – Pre-Intermediate</div>
+                <div class="p-dur"><span class="lbl">Заняття</span>1 год 30 хв</div>
+                <div class="p-price"><b>1800 грн</b><span>за 8 занять</span></div>
+              </li>
+              <li class="p-row">
+                <div class="p-name"><strong>IELTS Adults</strong><span class="grade">Дорослі</span></div>
+                <div class="p-level"><span class="lbl">Рівень</span>Pre-Intermediate – Intermediate B1</div>
+                <div class="p-dur"><span class="lbl">Заняття</span>1 год 30 хв</div>
+                <div class="p-price"><b>1800 грн</b><span>за 8 занять</span></div>
+              </li>
+          </ul>
+        </div>
+        <div class="price-panel" role="tabpanel" id="panel-de" aria-labelledby="tab-de" hidden>
+          <ul class="price-list">
+              <li class="p-row">
+                <div class="p-name"><strong>Wir 0–1</strong></div>
+                <div class="p-level"></div>
+                <div class="p-dur"><span class="lbl">Заняття</span>1 год 30 хв</div>
+                <div class="p-price"><b>1000 грн</b><span>за 4 заняття</span></div>
+              </li>
+              <li class="p-row">
+                <div class="p-name"><strong>Wir 1–2</strong></div>
+                <div class="p-level"></div>
+                <div class="p-dur"><span class="lbl">Заняття</span>1 год 30 хв</div>
+                <div class="p-price"><b>1000 грн</b><span>за 4 заняття</span></div>
+              </li>
+              <li class="p-row">
+                <div class="p-name"><strong>Wir 2–3</strong></div>
+                <div class="p-level"></div>
+                <div class="p-dur"><span class="lbl">Заняття</span>1 год 30 хв</div>
+                <div class="p-price"><b>1000 грн</b><span>за 4 заняття</span></div>
+              </li>
+          </ul>
+        </div>
+        <div class="price-foot reveal">
+          <p>Не знаєте, яка група підійде? Підберемо рівень і зручний розклад.</p>
+          <a class="btn btn-primary js-enroll" href="#enroll">Записатися</a>
         </div>
       </div>
     </section>
@@ -566,6 +754,23 @@
         a.rel = 'noopener';
       });
     }
+
+    const tabs = [...document.querySelectorAll('[role="tab"]')];
+    const selectTab = t => {
+      tabs.forEach(x => {
+        const on = x === t;
+        x.setAttribute('aria-selected', on);
+        x.tabIndex = on ? 0 : -1;
+        document.getElementById(x.getAttribute('aria-controls')).hidden = !on;
+      });
+    };
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => selectTab(t));
+      t.addEventListener('keydown', e => {
+        const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+        if (d) { const n = tabs[(i + d + tabs.length) % tabs.length]; selectTab(n); n.focus(); }
+      });
+    });
 
     document.getElementById('year').textContent = new Date().getFullYear();
 
